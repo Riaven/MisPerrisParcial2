@@ -1,0 +1,80 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<meta charset="utf-8">
+
+	<link rel="stylesheet"  href="{% static 'css/estilos.css' %}">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js">
+	</script>
+    
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+	<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+
+	
+
+
+
+	<title> {% block title %} MIS PERRIS {% endblock %}</title>
+</head>
+<body>
+
+
+    {% block header %}
+	<nav id="principal">
+
+		<div class="nav-wrapper">
+			<a href="#" class="brand-logo">
+				<img src="static/imagenes/img/logo.png" alt="logo">
+			</a>
+			<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="#">Inicio</a></li>
+				<li><a href="#">Quiénes somos</a></li>
+				<li><a href="#">Servicios</a></li>
+				<li><a href="#">Contáctanos</a></li>
+			</ul>
+		</div>
+
+		<ul class="sidenav" id="mobile-demo">
+			<li><a href="#">Inicio</a></li>
+			<li><a href="#">Quiénes somos</a></li>
+			<li><a href="#">Servicios</a></li>
+			<li><a href="#">Contáctanos</a></li>
+		</ul>
+		
+
+	</nav>
+    {% endblock %}
+    
+    {% block content%}
+    <h1>Prueba</h1>
+    {% endblock %}
+
+    {% block footer %}
+
+	<footer>
+		<br>
+		<h5 align="center"> Desarrollo Web y Mobile</h5>
+
+
+	</footer>
+
+    {% endblock %}
+
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>
