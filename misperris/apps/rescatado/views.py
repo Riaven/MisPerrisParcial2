@@ -26,7 +26,13 @@ def rescatado_view(request):
         
         if form.is_valid():
             form.save()
-        return redirect('index')
+        return redirect('rescatado_listar')
     else:
         form = RescatadoForm()
     return render(request, 'rescatado/rescatado_form.html', {'form':form})
+
+
+def rescatado_list(request):
+    rescatado = Rescatado.objects.all()
+    contexto = {'rescatados':rescatado}
+    return render(request, 'rescatado/rescatado_list.html', contexto)

@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+    <br>
+    <div class="row center">
+            <h1>Lista de Rescatados</h1>
+    </div>
+    
+    <div class="row">
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Foto</td>
+                        <td>Nombre</td>
+                        <td>Descripción</td>
+                        <td>Raza</td>
+                        <td>Estado</td>
+                        <td>Acciones</td>
+                        <td>Administrador</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if rescatados %}
+                    {% for rescatado in rescatados %}
+                    <tr>
+                        <td>{{ rescatado.fotografia }}</td>
+                        <td>{{ rescatado.nombre }}</td>
+                        <td>{{ rescatado.descripcion }}</td>
+                        <td>{{ rescatado.raza }}</td>
+                        <td>{{ rescatado.estado }}</td>
+                    </tr>
+                    {% endfor %}
+        
+                    {% else %}
+                    <h1>No hay registros de rescatados</h1>
+        
+                    {% endif %}
+                </tbody>
+            </table>
+            {% endblock %}
+    </div>
+    
+
+</div>
