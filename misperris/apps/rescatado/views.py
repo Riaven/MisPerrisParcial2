@@ -1,7 +1,32 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
+from apps.rescatado.forms import RescatadoForm
+from apps.rescatado.models import Rescatado
+
 # Create your views here.
 
 
 def index(request):
     return render (request, 'rescatado/index.html')
+
+
+"""class RescatadoCreate(CreateView):
+    model = Rescatado
+    form_class = RescatadoForm
+    template_name = 'rescatado/rescatado_form.html'
+    success_url = reverse_lazy('rescatado:index')"""
+
+
+#se visualiza el form para crear un nuevo rescatado
+def rescatado_view(request):
+    if request.method == 'POST':
+        form = RescatadoForm(request.POST)
+        
+        if form.is_valid():
+            form.save()
+        return redirect('index')
+    else:
+        form = RescatadoForm()
+    return render(request, 'rescatado/rescatado_form.html', {'form':form})

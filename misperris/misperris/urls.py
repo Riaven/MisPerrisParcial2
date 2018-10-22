@@ -14,9 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from apps.rescatado.views import index
+from django.contrib import admin
 
 urlpatterns = [
-    url(r'^$', index),
-    
+    url(r'^admin/', admin.site.urls),
+    url(r'^index/', include ('apps.rescatado.urls')),
 ]

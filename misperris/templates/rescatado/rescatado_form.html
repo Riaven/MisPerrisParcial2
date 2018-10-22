@@ -1,0 +1,14 @@
+<!--
+    
+-->
+<!--Para heredar de la plantilla base el diseño de la pag-->
+
+<!--Para cambiar el contenido que se encuentra en esta pag-->
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+        
+    <button type="submit">Guardar</button>
+</form>
+{% endblock %}
