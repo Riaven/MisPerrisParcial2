@@ -6,43 +6,41 @@
 <div class="container">
     <br>
     <div class="row center">
-            <h1>Lista de Rescatados</h1>
+        <h1>Lista de Rescatados</h1>
     </div>
-    
-    <div class="row">
-            <br>
-            <table>
-                <thead>
-                    <tr>
-                        <td>Foto</td>
-                        <td>Nombre</td>
-                        <td>Descripción</td>
-                        <td>Raza</td>
-                        <td>Estado</td>
-                        <td>Acciones</td>
-                        <td>Administrador</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% if rescatados %}
-                    {% for rescatado in rescatados %}
-                    <tr>
-                        <td>{{ rescatado.fotografia }}</td>
-                        <td>{{ rescatado.nombre }}</td>
-                        <td>{{ rescatado.descripcion }}</td>
-                        <td>{{ rescatado.raza }}</td>
-                        <td>{{ rescatado.estado }}</td>
-                    </tr>
-                    {% endfor %}
-        
-                    {% else %}
-                    <h1>No hay registros de rescatados</h1>
-        
-                    {% endif %}
-                </tbody>
-            </table>
-            {% endblock %}
-    </div>
-    
+    {% if rescatados %}
+    {% for rescatado in rescatados %}
+    <div class="row ">
+        <div class="divider"></div>
 
+        <div class="col s3">
+            <img src="{% static 'imagenes/rescatados/{{ rescatado.fotografia }}' %}" alt="perro">
+            
+            <br>
+            {{ rescatado.raza }}
+        </div>
+
+        <div class="col s9">
+
+
+            <h5>{{ rescatado.nombre }}</h5>
+            <br>
+            <i>{{ rescatado.descripcion }}</i>
+            <br><br>
+            {{ rescatado.estado }}
+
+        </div>
+
+
+
+    </div>
+
+    {% endfor %}
+
+    {% else %}
+    <h1>No hay registros de rescatados</h1>
+
+    {% endif %}
 </div>
+
+{% endblock %}
