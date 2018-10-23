@@ -43,7 +43,7 @@ def rescatado_edit(request, id_rescatado):
     if request.method == 'GET':
         form = RescatadoForm(instance=rescatado)
     else:
-        form = RescatadoForm(request.POST, instance=mascota)
+        form = RescatadoForm(request.POST, instance=rescatado)
         if form.is_valid():
             form.save()
         return redirect('rescatado_listar')
