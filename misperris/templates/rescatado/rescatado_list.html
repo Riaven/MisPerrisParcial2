@@ -29,6 +29,8 @@
             <br><br>
             {{ rescatado.estado }}
 
+            <a class="btn waves-effect waves-light green" href="{% url 'rescatado_editar' rescatado.id %}">Editar</a>
+            <a class="btn waves-effect waves-light red" href="{% url 'rescatado_eliminar' rescatado.id %}">Eliminar</a>
         </div>
 
 
