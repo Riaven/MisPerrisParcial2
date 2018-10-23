@@ -2,6 +2,9 @@
     
 -->
 <!--Para heredar de la plantilla base el diseño de la pag-->
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% load materializecss %}
 
 <!--Para cambiar el contenido que se encuentra en esta pag-->
 {% block content %}
@@ -9,6 +12,7 @@
     {% csrf_token %}
     {{ form.as_p }}
         
+
     <button type="submit">Guardar</button>
 </form>
 {% endblock %}
