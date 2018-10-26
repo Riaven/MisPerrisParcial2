@@ -11,6 +11,11 @@ from apps.rescatado.models import Rescatado
 def index(request):
     return render (request, 'rescatado/index.html')
 
+def somos(request):
+    return render (request, 'principal/somos.html')
+
+def servicios(request):
+    return render (request, 'principal/servicios.html')
 
 """class RescatadoCreate(CreateView):
     model = Rescatado

@@ -20,4 +20,4 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/', include ('apps.rescatado.urls')),
     url(r'^usuario/', include('apps.usuario.urls')),
-]
+]   

@@ -36,16 +36,16 @@
 	<nav id="principal">
 
 		<div class="nav-wrapper">
-			<a href="#" class="brand-logo">
+			<a href="{% url 'index' %}" class="brand-logo">
 				<img src="{% static 'imagenes/img/logo.png' %}" alt="logo">
 			</a>
 			<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="#">Inicio</a></li>
-				<li><a href="#">Quiénes somos</a></li>
-				<li><a href="#">Servicios</a></li>
+				<li><a href="{% url 'index' %}">Inicio</a></li>
+				<li><a href="{% url 'somos' %}">Quiénes somos</a></li>
+				<li><a href="{% url 'servicios' %}">Servicios</a></li>
 				<li><a href="#">Contáctanos</a></li>
-				<li><a href="#">Registrase</a></li>
+				<li><a href="{% url 'registrar' %}">Registrase</a></li>
 				<li><a href="#">Inicar sesión</a></li>
 			</ul>
 		</div>
