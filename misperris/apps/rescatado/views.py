@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from apps.rescatado.forms import RescatadoForm
@@ -28,6 +28,7 @@ def servicios(request):
 #se visualiza el form para crear un nuevo rescatado
 
 def rescatado_view(request):
+    
     if request.method == 'POST':
         form = RescatadoForm(request.POST)
         
@@ -46,19 +47,26 @@ def rescatado_list(request):
 
 
 def rescatado_edit(request, id_rescatado):
-    rescatado = Rescatado.objects.get(id=id_rescatado)
-    if request.method == 'GET':
-        form = RescatadoForm(instance=rescatado)
+
+    if request.user.is_superuser:
+        rescatado = Rescatado.objects.get(id=id_rescatado)
+        if request.method == 'GET':
+            form = RescatadoForm(instance=rescatado)
+        else:
+            form = RescatadoForm(request.POST, instance=rescatado)
+            if form.is_valid():
+                form.save()
+            return redirect('rescatado_listar')
+        return render(request,'rescatado/rescatado_form.html',{'form':form})
     else:
-        form = RescatadoForm(request.POST, instance=rescatado)
-        if form.is_valid():
-            form.save()
-        return redirect('rescatado_listar')
-    return render(request,'rescatado/rescatado_form.html',{'form':form})
+        return HttpResponseNotFound('<h1>Página no encontrada o no tienes los suficientes permisos para entrar a ella :(</h1>')
 
 def rescatado_delete(request, id_rescatado):
-    rescatado = Rescatado.objects.get(id=id_rescatado)
-    if request.method == 'POST':
-        rescatado.delete()
-        return redirect('rescatado_listar')
-    return render(request,'rescatado/rescatado_delete.html', {'rescatado':rescatado})
+    if request.user.is_superuser:    
+        rescatado = Rescatado.objects.get(id=id_rescatado)
+        if request.method == 'POST':
+            rescatado.delete()
+            return redirect('rescatado_listar')
+        return render(request,'rescatado/rescatado_delete.html', {'rescatado':rescatado})
+    else:
+        return HttpResponseNotFound('<h1>Página no encontrada o no tienes los suficientes permisos para entrar a ella :(</h1>')
