@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -10,10 +11,11 @@ class TipoVivienda(models.Model):
         return '{}'.format(self.nombre)
 
 class Usuario(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     nombre = models.CharField(max_length = 100)
     correo = models.EmailField()
     run = models.CharField(max_length = 10)
-    fecha_nac = models.DateTimeField(default=datetime.now, blank=True)
+    fecha_nac = models.DateField(null=True, blank=True)
     telefono = models.CharField(max_length = 14)
     region = models.CharField(max_length = 50)
     comuna = models.CharField(max_length = 50)
@@ -21,3 +23,4 @@ class Usuario(models.Model):
     
     def __srt__(self):
         return '{}'.format(self.nombre)
+        

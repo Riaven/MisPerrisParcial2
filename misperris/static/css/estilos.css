@@ -1,7 +1,6 @@
-#contenedor{
+.container{
 	width: 100%
 }
-
 
 #principal{
 	background-color: #85D4B7;
@@ -11,9 +10,7 @@
 	border-style: none;
 }
 
-#divpri{
-	width: 100%
-}
+
 
 ul li{
 	list-style: none;
