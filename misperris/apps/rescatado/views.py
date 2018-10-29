@@ -4,6 +4,7 @@ from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from apps.rescatado.forms import RescatadoForm
 from apps.rescatado.models import Rescatado
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -25,6 +26,7 @@ def servicios(request):
 
 
 #se visualiza el form para crear un nuevo rescatado
+
 def rescatado_view(request):
     if request.method == 'POST':
         form = RescatadoForm(request.POST)

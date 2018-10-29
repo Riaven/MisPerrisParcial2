@@ -14,7 +14,7 @@
         <div class="divider"></div>
 
         <div class="col s3">
-            <img src="{% static 'imagenes/rescatados/'%}" alt="perro">
+            <img src="{% static '{{ rescatado.fotografia }}' %}" alt="rescatado">
             
             <br>
             
@@ -33,7 +33,6 @@
             <a class="btn waves-effect waves-light red" href="{% url 'rescatado_eliminar' rescatado.id %}">Eliminar</a>
             <a class="btn waves-effect waves-light blue" href="">Adoptar</a>
         </div>
-
 
 
     </div>
