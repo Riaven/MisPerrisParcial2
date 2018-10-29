@@ -45,18 +45,18 @@
 				<li><a href="{% url 'somos' %}">Quiénes somos</a></li>
 				<li><a href="{% url 'servicios' %}">Servicios</a></li>
 				<li><a href="#">Contáctanos</a></li>
-				<li><a href="{% url 'registrar' %}">Registrase</a></li>
-				<li><a href="#">Inicar sesión</a></li>
+				<li><a href="{% url 'registrar' %}">Registrarse</a></li>
+				<li><a href="{% url 'login' %}">Inicar sesión</a></li>
 			</ul>
 		</div>
 
 		<ul class="sidenav" id="mobile-demo">
-			<li><a href="#">Inicio</a></li>
-			<li><a href="#">Quiénes somos</a></li>
-			<li><a href="#">Servicios</a></li>
-			<li><a href="#">Contáctanos</a></li>
-			<li><a href="#">Registrase</a></li>
-			<li><a href="#">Inicar sesión</a></li>
+			<li><a href="{% url 'index' %}">Inicio</a></li> <br>
+			<li><a href="{% url 'somos' %}">Quiénes somos</a></li> <br>
+			<li><a href="{% url 'servicios' %}">Servicios</a></li> <br>
+			<li><a href="#">Contáctanos</a></li> <br>
+			<li><a href="{% url 'registrar' %}">Registrarse</a></li> <br>
+			<li><a href="{% url 'login' %}">Inicar sesión</a></li> <br>
 		</ul>
 		
 

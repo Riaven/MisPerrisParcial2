@@ -15,6 +15,7 @@ class RegistroUsuario(UserCreationForm):
             'last_name',
             'email',
             
+            
         )
 
         labels = {
@@ -23,8 +24,7 @@ class RegistroUsuario(UserCreationForm):
             'last_name': 'Apellidos',
             'email': 'Correo electrónico',
             
-        }
-
-        widgets = {
             
         }
+
+       

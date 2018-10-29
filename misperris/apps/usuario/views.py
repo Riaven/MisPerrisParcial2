@@ -6,6 +6,8 @@ from apps.usuario.forms import RegistroUsuario
 
 class RegistroUsuario(CreateView):
     model = User
-    template_name = "usuario/registrar.html"
+    template_name = "registration/registrar.html"
     form_class = RegistroUsuario
     success_url = reverse_lazy('rescatado_listar')
+
+
