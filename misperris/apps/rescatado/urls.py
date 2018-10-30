@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 from django.contrib.auth.decorators import login_required
-from apps.rescatado.views import index, rescatado_view, rescatado_list, rescatado_edit, rescatado_delete, somos, servicios
+from apps.rescatado.views import index, rescatado_view, rescatado_list, rescatado_edit, rescatado_delete, somos, servicios, contactanos
 
 urlpatterns = [
     url(r'^$', index, name='index'),
@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^eliminar/(?P<id_rescatado>\d+)/$', login_required(rescatado_delete), name='rescatado_eliminar'),
     url(r'^somos$', somos, name='somos'),
     url(r'^servicios$', servicios, name='servicios'),
+    url(r'^contactanos$', contactanos, name='contactanos'),
 ]

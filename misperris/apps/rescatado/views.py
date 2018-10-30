@@ -18,6 +18,9 @@ def somos(request):
 def servicios(request):
     return render (request, 'principal/servicios.html')
 
+def contactanos(request):
+    return render (request, 'principal/contactanos.html')
+
 """class RescatadoCreate(CreateView):
     model = Rescatado
     form_class = RescatadoForm
