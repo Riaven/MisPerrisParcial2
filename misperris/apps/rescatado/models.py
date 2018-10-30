@@ -18,7 +18,7 @@ class Estado(models.Model):
 class Rescatado(models.Model):
     nombre = models.CharField(max_length = 50)
     descripcion = models.TextField()
-    fotografia = models.CharField(max_length = 50, default='.jpg')
+    fotografia = models.CharField(max_length = 200, default='.jpg')
     raza = models.ForeignKey(Raza, default=1, on_delete=models.CASCADE)
     estado = models.ForeignKey(Estado, default=1, on_delete=models.CASCADE)
 
