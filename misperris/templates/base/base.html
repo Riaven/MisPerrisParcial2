@@ -54,7 +54,9 @@
 				{% endif %}
 				{% if user.is_authenticated %}
 				<li><a href="{% url 'rescatado_listar' %}">Lista de Mascotas</a></li>
-				<li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+				<li><a href="{% url 'logout' %}">Cerrar sesión
+					<i class="material-icons right">power_settings_new</i>
+				</a></li>
 				{% endif %}
 				
 			</ul>
