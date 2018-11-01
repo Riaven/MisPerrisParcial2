@@ -10,7 +10,9 @@ from django.contrib.auth.decorators import login_required
 
 
 def index(request):
-    return render (request, 'rescatado/index.html')
+    rescatado = Rescatado.objects.all()
+    contexto = {'rescatados':rescatado}
+    return render (request, 'rescatado/index.html', contexto)
 
 def somos(request):
     return render (request, 'principal/somos.html')
@@ -31,16 +33,19 @@ def contactanos(request):
 #se visualiza el form para crear un nuevo rescatado
 
 def rescatado_view(request):
-    
-    if request.method == 'POST':
-        form = RescatadoForm(request.POST)
-        
-        if form.is_valid():
-            form.save()
-        return redirect('rescatado_listar')
+    if request.user.is_superuser:
+        if request.method == 'POST':
+            form = RescatadoForm(request.POST)
+            
+            if form.is_valid():
+                form.save()
+            return redirect('rescatado_listar')
+        else:
+            form = RescatadoForm()
+        return render(request, 'rescatado/rescatado_form.html', {'form':form})
     else:
-        form = RescatadoForm()
-    return render(request, 'rescatado/rescatado_form.html', {'form':form})
+        return HttpResponseNotFound('<h1>Página no encontrada o no tienes los suficientes permisos para entrar a ella :(</h1>')
+
 
 
 def rescatado_list(request):
