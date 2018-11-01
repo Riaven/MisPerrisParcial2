@@ -141,30 +141,35 @@
 
 {% if rescatados %}
 <div class="row">
-{% for rescatado in rescatados %}
+    {% for rescatado in rescatados %}
 
 
-    <div class="col s12 m7">
+    <div class="col s3">
         <div class="card " style="width: 400px;">
-            <div class="card-image">
-                    <img class="responsive-img" src="{% static 'imagenes/rescatados' %}/{{rescatado.fotografia}}" alt="rescatado"  />
-                <span class="card-title">{{ rescatado.nombre }}</span>
+
+            <div class="card-image  waves-block waves-light">
+                    <img class="responsive-img activator" src="{% static 'imagenes/rescatados' %}/{{rescatado.fotografia}}" alt="rescatado" style="width: 400px; height: 400px" />
             </div>
             <div class="card-content">
-                <p>{{ rescatado.descripcion }}</p>
+                <span class="card-title activator grey-text text-darken-4">{{ rescatado.nombre }}<i class="material-icons right">more_vert</i></span>
+                <p><a href="{% url 'rescatado_listar' %}">QUIERO ADOPTAR!</a></p>
             </div>
-            <div class="card-action">
-                <a href="#">QUIERO ADOPTAR!</a>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">{{ rescatado.nombre }}<i class="material-icons right">close</i></span>
+                <p align=justify>{{ rescatado.descripcion }}</p>
             </div>
+
         </div>
     </div>
 
 
-{% endfor %}
+    {% endfor %}
 </div>
 {% else %}
 <h1>No hay registros de rescatados</h1>
 
 {% endif %}
+
+
 
 {% endblock %}
