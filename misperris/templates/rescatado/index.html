@@ -65,7 +65,7 @@
 
     <div class="col s6">
         <img src="{% static 'imagenes/img/crowfunding.jpg' %}" class="responsive-img" id="comida" alt="comida">
-        <h4 id=titulo style="font-size:4vw;">CROWDFUNDING</h4>
+        <h4 id=titulo>CROWDFUNDING</h4>
         <h6 id="subtitulo">FINANCIAMIENTO</h6>
         <br>
         <hr width="8%" align="left" id="hrs">
@@ -136,14 +136,17 @@
 
 <br><br><br><br>
 <div class="row center">
-    <h1>Galería de mascotas :)</h1>
+    <h1><b>Galería de mascotas :)</b> </h1>
 </div>
 
 {% if rescatados %}
 <div class="row">
+
+    <h2 > <i>Disponible para adoptar!</i> </h2>
     {% for rescatado in rescatados %}
 
-
+    
+    {% if rescatado.estado.nombre == 'Disponible' %}
     <div class="col s3">
         <div class="card " style="width: 400px;">
 
@@ -161,10 +164,73 @@
 
         </div>
     </div>
-
+    {% endif %}
 
     {% endfor %}
+
 </div>
+    <br><br><br>
+<div class="row">    
+    <h2>  <i>Rescatados, disponibles pronto!</i> </h2>
+    {% for rescatado in rescatados %}
+
+    
+    {% if rescatado.estado.nombre == 'Rescatado' %}
+    <div class="col s3">
+        <div class="card " style="width: 400px;">
+
+            <div class="card-image  waves-block waves-light">
+                    <img class="responsive-img activator" src="{% static 'imagenes/rescatados' %}/{{rescatado.fotografia}}" alt="rescatado" style="width: 400px; height: 400px" />
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{ rescatado.nombre }}<i class="material-icons right">more_vert</i></span>
+                <p><a href="{% url 'rescatado_listar' %}">QUIERO ADOPTAR!</a></p>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">{{ rescatado.nombre }}<i class="material-icons right">close</i></span>
+                <p align=justify>{{ rescatado.descripcion }}</p>
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+
+    {% endfor %}
+
+</div>
+    <br><br><br>
+<div class="row">   
+    <h2> <i>Adoptados :)</i> </h2>
+    {% for rescatado in rescatados %}
+
+    
+    {% if rescatado.estado.nombre == 'Adoptado' %}
+    <div class="col s3">
+        <div class="card " style="width: 400px;">
+
+            <div class="card-image  waves-block waves-light">
+                    <img class="responsive-img activator" src="{% static 'imagenes/rescatados' %}/{{rescatado.fotografia}}" alt="rescatado" style="width: 400px; height: 400px" />
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{ rescatado.nombre }}<i class="material-icons right">more_vert</i></span>
+                <p><a href="{% url 'rescatado_listar' %}">QUIERO ADOPTAR!</a></p>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">{{ rescatado.nombre }}<i class="material-icons right">close</i></span>
+                <p align=justify>{{ rescatado.descripcion }}</p>
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+
+    {% endfor %}
+
+</div> 
+    <br><br><br>
+
+   
+
 {% else %}
 <h1>No hay registros de rescatados</h1>
 
